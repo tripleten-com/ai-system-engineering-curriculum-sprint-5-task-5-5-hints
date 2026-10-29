@@ -90,13 +90,13 @@ The CI workflow file must stay exactly as the template supplied it. Compare your
 
 ## In this Task
 
-<details><summary>The `start` step fails or times out with the new service</summary>
+<details><summary>The <code>start</code> step fails or times out with the new service</summary>
 
 Read the new service's log and its health in `docker compose ps`. An import error or a missing package shows up there.
 
 </details>
 
-<details><summary>A test fails with `review_already_open` only in CI or only on a second run</summary>
+<details><summary>A test fails with <code>review_already_open</code> only in CI or only on a second run</summary>
 
 Which ports does that test pass to the tool? Do your tests share anything with the running stack?
 
