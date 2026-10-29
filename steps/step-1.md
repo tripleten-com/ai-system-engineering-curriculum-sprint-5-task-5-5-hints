@@ -32,25 +32,25 @@ A bad input produces a rejection: an ordinary result with a code from the guardr
 
 ### You can't decide where the exception's state comes from
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Who knows the exception's state: the model that wrote the arguments, or the caller that started the run?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Can the tool's container reach the database?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 If the model could write the state, what could it unlock?
 
 </details>
 
-<details><summary>Move 4</summary>
+<details><summary>Hint 4</summary>
 
 The approach: a small typed context object with the exception's id, its state and the run's id, passed to the tool beside the arguments. Only the caller fills it, and the tool never reads the state from the arguments.
 
@@ -58,25 +58,25 @@ The approach: a small typed context object with the exception's id, its state an
 
 ### The validation order comes out wrong
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Write a call with a misspelled field. Which code does your tool return first?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Does your code look at the field names before it reads any value?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Walk your checks in the lesson's order and stop at the first one that fails. Is any check out of place?
 
 </details>
 
-<details><summary>Move 4</summary>
+<details><summary>Hint 4</summary>
 
 The approach: four passes over the arguments in order. Each pass returns its code the moment it finds a problem, and only a clean pass moves on to the next.
 
@@ -84,19 +84,19 @@ The approach: four passes over the arguments in order. Each pass returns its cod
 
 ### A bad input crashes the tool instead of being rejected
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Where does the error come from: one of your checks, or the code that turns the arguments into a typed object?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 What does a caller see when a tool raises, compared with a returned rejection?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Run your checks on the plain mapping before anything converts it, or catch the conversion's failure and turn it into the first rule it broke.
 
@@ -104,19 +104,19 @@ Run your checks on the plain mapping before anything converts it, or catch the c
 
 ### Your result can mix two outcomes
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Can you build a result that says `opened` and also carries a reason?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 How did your Task 1 contract stop a tool input on the wrong kind? The same kind of check works here.
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Write the rules down: opened has a review id and no reason, and the other two have a reason and no review id. Then enforce them when the result is built.
 
@@ -124,19 +124,19 @@ Write the rules down: opened has a review id and no reason, and the other two ha
 
 ### A rejection repeats what the model wrote
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Read one of your rejection codes aloud. Does any part of it come from the input?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Which part of an unknown-field rejection would tempt you to include the field's name? Who wrote that name?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Use only the table's code and, where the code takes one, a field name from your contract. Never the input's own text.
 
@@ -144,19 +144,19 @@ Use only the table's code and, where the code takes one, a field name from your 
 
 ### You can't find the procedure id's format
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Which file declares what a procedure id looks like? Search the exception summary schema.
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Does your Task 4 loader already read that schema? Which parts does it expose?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Add one small reader beside the ones your loader has, so the tool checks every closed form from its source.
 
@@ -164,19 +164,19 @@ Add one small reader beside the ones your loader has, so the tool checks every c
 
 ### You don't have ports to call the tool with
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Open `tests/doubles/retrieval.py`. How does it stand in for a port?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Which methods do the object store port and the queue port declare?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Write one small in-memory stand-in per port under `tests/doubles/`. Each holds what it was given, so you can look inside after a call.
 

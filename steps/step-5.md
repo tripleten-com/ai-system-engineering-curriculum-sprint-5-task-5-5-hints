@@ -42,19 +42,19 @@ Load every input from its file, bound to the context's exception id as its comme
 
 ### `review_already_open` shows up in a test that didn't ask for it
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Which ports does that test pass to the tool?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Could something from an earlier test, or an earlier run, still be in them?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Give every test fresh stand-ins from a fixture, and never pass the live adapters in tests.
 
@@ -62,19 +62,19 @@ Give every test fresh stand-ins from a fixture, and never pass the live adapters
 
 ### A broken tool still passes the rejection tests
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 What does each rejection test assert: only that the result isn't opened, or its exact status and reason?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 After each rejected call, do you check that the stand-ins hold what they held before?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Remove the binding check and run your tests. If none fails, the mismatch test isn't checking the code it should.
 
@@ -82,19 +82,19 @@ Remove the binding check and run your tests. If none fails, the mismatch test is
 
 ### Your tests mostly test the stand-ins
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Does any test write to a stand-in and read the same thing back?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Which part of your tool did that test run?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Set up the stand-ins only through the tool, or with the minimum a scenario needs, such as an existing open packet for `second-call`. Then read them only to check the tool's effect.
 
@@ -102,19 +102,19 @@ Set up the stand-ins only through the tool, or with the minimum a scenario needs
 
 ### The demo fails after you add the service
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Does the stack start? Read your service's log and its health in `docker compose ps`.
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Does the demo depend on anything your new service changed, such as a shared environment block?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Fix the service until the stack is healthy, then run `poe demo` again. The agent still ends a tool call as not enabled in this Task, so no review opens in the demo.
 
@@ -122,19 +122,19 @@ Fix the service until the stack is healthy, then run `poe demo` again. The agent
 
 ### Your boundary document no longer matches the tool
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Where does your Task 4 document say the tool gets the exception's state?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Is that still true now that the context carries it?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Update that sentence so the document and the code say the same thing, and mention the change in your note.
 

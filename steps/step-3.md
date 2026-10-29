@@ -33,19 +33,19 @@ One more practical point: the worker reads everything on its queue as its own ki
 
 ### You can't decide what the packet holds
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 List the fields the lesson names for the packet. Which of them came from the model, and were they validated?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Does the dispatcher need anything in the packet that the exception record already holds?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 How is a review id made so it's unique and never comes from the model? Write that rule beside the tool.
 
@@ -53,19 +53,19 @@ How is a review id made so it's unique and never comes from the model? Write tha
 
 ### The queue port doesn't accept your job
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 What type does the queue port's publish method declare?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 What does the queue adapter actually read from the job it's given? Read the adapter's publish method.
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 The approach: a small model of your own holding the exception id and the review id, published through the same port. Mark that one call for the type checker with a comment that says why, and record the choice in your note.
 
@@ -73,19 +73,19 @@ The approach: a small model of your own holding the exception id and the review 
 
 ### Your review jobs end up in the worker's queue
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 What does the worker do with a message it can't decode as its own job?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 How does the initializer create the worker's queue? Read `src/api/initialize.py`.
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Create a queue of your own when your server starts, the same way, and publish only there.
 
@@ -93,25 +93,25 @@ Create a queue of your own when your server starts, the same way, and publish on
 
 ### The new queue's policy values are typed into your code
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Where do the worker queue's visibility timeout and receive count come from?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Does your service's environment carry those two values?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Which block in `compose.yaml` would have to hold them so your service and the worker read the same values, without your service getting anything else?
 
 </details>
 
-<details><summary>Move 4</summary>
+<details><summary>Hint 4</summary>
 
 The approach: read both values from the environment, the way the initializer's settings read them, and make sure the environment block your service merges includes them.
 
@@ -119,25 +119,25 @@ The approach: read both values from the environment, the way the initializer's s
 
 ### A failed publish loses the review
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 After a failed publish, what's left in the object store, and with which status?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 What does the next call do when it finds that packet: reject it, start over, or finish it?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Does the next call make a new review id, or keep the one that's there? What about the opening time?
 
 </details>
 
-<details><summary>Move 4</summary>
+<details><summary>Hint 4</summary>
 
 The approach: when the existing packet isn't open, treat it as a review started and never announced. Keep its id and its time, take this call's validated values, then publish and mark it open.
 
@@ -145,19 +145,19 @@ The approach: when the existing packet isn't open, treat it as a review started 
 
 ### You can't make a port fail on request
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Can LocalStack fail when you ask it to? Where else could a failure come from?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 What could a stand-in port remember that makes its next call raise?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Give each stand-in a switch for "fail on the next write" or "fail on the next publish". It raises before it applies the effect, then resets.
 

@@ -33,25 +33,25 @@ Three habits keep the enforcement honest:
 
 ### You're not sure which configuration fields the tool checks
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 For each of the nine fields, ask: can one call show whether it holds, or do you need the whole run?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Which fields describe a run? Who sees the run: the tool, or the agent?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Which field has no check in any code, and what keeps it instead?
 
 </details>
 
-<details><summary>Move 4</summary>
+<details><summary>Hint 4</summary>
 
 Write down who enforces each of the nine fields. The tool checks the permitted states and the two allowed lists. The agent will handle the run-level ones. The prohibitions are kept by the container's reach.
 
@@ -59,19 +59,19 @@ Write down who enforces each of the nine fields. The tool checks the permitted s
 
 ### A review opens for the wrong exception
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Which check runs first in your tool's authority part?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 The state you check comes from the context. Is that context about the exception the arguments name?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Compare the two ids before any other authority check, and reject a mismatch with the code the lesson gives.
 
@@ -79,19 +79,19 @@ Compare the two ids before any other authority check, and reject a mismatch with
 
 ### The first call for an exception fails
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 What does the object store do when you read a key that doesn't exist? Read `docs/fidelity/ObjectStore.md` and the adapter.
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Is a missing packet an error, or the normal case for a first call?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Catch the store's "not found" and treat it as "no review yet". Reject only when a packet exists with the status open.
 
@@ -99,19 +99,19 @@ Catch the store's "not found" and treat it as "no review yet". Reject only when 
 
 ### Editing the configuration file doesn't change the tool
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 When does your tool read the file: once when it starts, or on every call?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Where did you put the loaded values: in a module-level variable, or in a local one inside the call?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Call your Task 4 loader inside the tool on every call. Then decide what the tool does with a broken file, and write that decision down.
 
